@@ -1,15 +1,12 @@
-.about-container {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 40px;
-}
+/* About page additions */
 
-.about-container h1 {
-  margin-bottom: 20px;
-  font-size: 36px;
-}
+.about-section { max-width: 820px; }
 
-.about-container p {
-  margin-bottom: 15px;
-  font-size: 18px;
+.cta-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 36px;
+  animation: fadeUp 0.7s 0.5s both;
 }
