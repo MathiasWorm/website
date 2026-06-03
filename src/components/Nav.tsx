@@ -40,7 +40,7 @@ export default function Nav() {
           {[
             { href: 'https://www.linkedin.com/in/mathias-worm-0a72101b5', label: 'LinkedIn', Icon: LinkedInIcon },
             { href: 'https://github.com/MathiasWorm', label: 'GitHub', Icon: GitHubIcon },
-            { href: 'https://discord.gg/yf2JvTz9', label: 'Discord', Icon: DiscordIcon },
+            { href: 'https://discord.gg/RDk2UGcQ97', label: 'Discord', Icon: DiscordIcon },
           ].map(({ href, label, Icon }) => (
             <li key={label}>
               <a
@@ -83,7 +83,6 @@ export default function Nav() {
             }`}
           >
             <Link to="/portfolio" onClick={() => setOpen(false)} className="block px-[14px] py-[9px] text-[#d4d4d4] text-[14px] no-underline transition-all duration-150 hover:bg-accent/10 hover:text-accent">Projects</Link>
-            <a href="#assets" onClick={() => setOpen(false)} className="block px-[14px] py-[9px] text-[#d4d4d4] text-[14px] no-underline transition-all duration-150 hover:bg-accent/10 hover:text-accent">Assets</a>
             <a href="#blog" onClick={() => setOpen(false)} className="block px-[14px] py-[9px] text-[#d4d4d4] text-[14px] no-underline transition-all duration-150 hover:bg-accent/10 hover:text-accent">Blog</a>
           </div>
         </div>

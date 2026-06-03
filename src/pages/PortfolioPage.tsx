@@ -1,21 +1,19 @@
 const projects = [
   {
     num: '01',
-    title: 'Project One',
-    description: 'A short description of your project. Explain what it does and why it\'s cool.',
-    href: '#',
+    title: 'Turn-Based Strategy Quickstarter – Unity Asset',
+    description:
+      'A complete, unit-centric framework for building turn-based tactics games in Unity. Includes A* pathfinding, a ScriptableObject-driven skill system, undo/revert actions, expandable AI behaviour, and seamless 2D Tilemap + 3D support — everything you need to prototype fast.',
+    tags: ['Unity', 'C#', 'Game Toolkit', 'Grid', 'Tactics'],
+    href: 'https://assetstore.unity.com/packages/tools/game-toolkits/turn-based-strategy-quickstarter-348228',
   },
   {
     num: '02',
-    title: 'Project Two',
-    description: 'Describe another interesting project. Include your technologies used.',
-    href: '#',
-  },
-  {
-    num: '03',
-    title: 'Project Three',
-    description: 'Another project card. You can add more of these as needed.',
-    href: '#',
+    title: 'Neyo - VR App for Real Estate Visualization',
+    description:
+      'A VR application designed to provide immersive real estate visualization experiences. Users can explore properties in a virtual environment, enhancing their understanding of space and design before making decisions.',
+    tags: ['VR', 'Unity', 'C#', 'Real Estate', 'Visualization'],
+    href: 'https://www.meta.com/de-de/experiences/neyo/9063887047051197/?srsltid=AfmBOopeUzngGj36XeYRL3MM4ose3EK4Q88OMgFAd6peDiyqyAOsOMHF',
   },
 ];
 
@@ -60,9 +58,21 @@ export default function PortfolioPage() {
             <h3 className="text-[22px] font-extrabold text-white mt-2 mb-3 tracking-[-0.01em]">
               {project.title}
             </h3>
-            <p className="text-sm text-[#a3a3a3] mb-5 leading-relaxed">
+            <p className="text-sm text-[#a3a3a3] mb-4 leading-relaxed">
               {project.description}
             </p>
+            {'tags' in project && (
+              <div className="flex flex-wrap gap-1.5 mb-5">
+                {project.tags.map((tag: string) => (
+                  <span
+                    key={tag}
+                    className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[#a3a3a3] tracking-wide"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
             <a
               href={project.href}
               target="_blank"
