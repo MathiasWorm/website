@@ -15,7 +15,7 @@ export default function Footer() {
           <GitHubIcon className="w-5 h-5" />
         </a>
         <a
-          href="https://discord.gg/yf2JvTz9"
+          href="https://discord.gg/RDk2UGcQ97"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Discord"
