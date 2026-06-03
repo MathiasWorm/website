@@ -45,7 +45,7 @@ export default function AboutPage() {
         style={{ animation: 'fadeUp 0.7s 0.5s both' }}
       >
         <a
-          href="mailto:hello@mathiasworm.de"
+          href="mailto:info@mathiasworm.de"
           className="bg-accent text-black rounded-full px-6 py-3 text-sm font-semibold no-underline inline-flex items-center gap-1.5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(249,115,22,0.4)] hover:bg-[#fb923c]"
         >
           Get in touch →
