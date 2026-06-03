@@ -7,6 +7,35 @@ import DiscordIcon from './icons/DiscordIcon';
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const ddRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  function handleButtonKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setOpen(true);
+      setTimeout(() => {
+        const items = menuRef.current?.querySelectorAll('[role="menuitem"]') as NodeListOf<HTMLElement>;
+        items?.[0]?.focus();
+      }, 0);
+    }
+  }
+
+  function handleMenuKeyDown(e: React.KeyboardEvent) {
+    const items = Array.from(
+      menuRef.current?.querySelectorAll('[role="menuitem"]') ?? []
+    ) as HTMLElement[];
+    if (!items.length) return;
+    const index = items.indexOf(document.activeElement as HTMLElement);
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      items[(index + 1) % items.length].focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      items[(index - 1 + items.length) % items.length].focus();
+    } else if (e.key === 'Tab') {
+      setOpen(false);
+    }
+  }
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -63,6 +92,10 @@ export default function Nav() {
         <div ref={ddRef} className="relative">
           <button
             onClick={() => setOpen((o) => !o)}
+            onKeyDown={handleButtonKeyDown}
+            aria-haspopup="menu"
+            aria-expanded={open}
+            aria-controls="resources-menu"
             className="text-[#e5e5e5] text-[14px] font-medium inline-flex items-center gap-1 bg-none border-none cursor-pointer font-sans transition-colors duration-200 hover:text-accent"
           >
             Resources
@@ -76,14 +109,18 @@ export default function Nav() {
           </button>
 
           <div
+            ref={menuRef}
+            id="resources-menu"
+            role="menu"
+            onKeyDown={handleMenuKeyDown}
             className={`absolute top-[calc(100%+16px)] left-1/2 -translate-x-1/2 bg-[#111] border border-white/8 p-1.5 min-w-[160px] z-[100] shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-200 ${
               open
                 ? 'opacity-100 pointer-events-auto translate-y-0 scale-100'
                 : 'opacity-0 pointer-events-none -translate-y-1.5 scale-[0.97]'
             }`}
           >
-            <Link to="/portfolio" onClick={() => setOpen(false)} className="block px-[14px] py-[9px] text-[#d4d4d4] text-[14px] no-underline transition-all duration-150 hover:bg-accent/10 hover:text-accent">Projects</Link>
-            <a href="#blog" onClick={() => setOpen(false)} className="block px-[14px] py-[9px] text-[#d4d4d4] text-[14px] no-underline transition-all duration-150 hover:bg-accent/10 hover:text-accent">Blog</a>
+            <Link role="menuitem" to="/portfolio" onClick={() => setOpen(false)} className="block px-[14px] py-[9px] text-[#d4d4d4] text-[14px] no-underline transition-all duration-150 hover:bg-accent/10 hover:text-accent">Projects</Link>
+            <a role="menuitem" href="#blog" onClick={() => setOpen(false)} className="block px-[14px] py-[9px] text-[#d4d4d4] text-[14px] no-underline transition-all duration-150 hover:bg-accent/10 hover:text-accent">Blog</a>
           </div>
         </div>
 
